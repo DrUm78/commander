@@ -32,6 +32,7 @@ struct Config {
     std::string res_dir { RES_DIR };
 
     // Keyboard key code mappings
+    SDLC_Keycode key_menu = CMDR_KEY_MENU;
     SDLC_Keycode key_down = CMDR_KEY_DOWN;
     SDLC_Keycode key_left = CMDR_KEY_LEFT;
     SDLC_Keycode key_open = CMDR_KEY_OPEN;

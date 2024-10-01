@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.21)
+cmake_minimum_required(VERSION 3.13) # CMP0083 NEW
 
 project(DinguxCommander
   VERSION 0.0.1
@@ -19,6 +19,8 @@ elseif(TARGET_PLATFORM STREQUAL "rs90")
   include(CMake/rs90_defs.cmake)
 elseif(TARGET_PLATFORM STREQUAL "rg99")
   include(CMake/rg99_defs.cmake)
+elseif(TARGET_PLATFORM STREQUAL "funkey-s")
+  include(CMake/funkey-s_defs.cmake)
 endif()
 
 option(USE_SDL2 "Use SDL2 instead of SDL1" ON)
@@ -26,9 +28,9 @@ option(WITH_SYSTEM_SDL_GFX "Use system SDL_gfx library" OFF)
 option(WITH_SYSTEM_SDL_TTF "Use system SDL_ttf library" OFF)
 
 set(RES_DIR \"res/\" CACHE STRING "Resources directory")
-set(FILE_SYSTEM \"/dev/mmcblk1p1\" CACHE STRING "Default filesystem (for Disk info)")
-set(PATH_DEFAULT "" CACHE STRING "Default path for the left pane (default: getenv(\"PWD\")")
-set(PATH_DEFAULT_RIGHT "" CACHE STRING "Default path for the right pane (default: getenv(\"HOME\")")
+#set(FILE_SYSTEM \"/dev/mmcblk1p1\" CACHE STRING "Default filesystem (for Disk info)")
+#set(PATH_DEFAULT "" CACHE STRING "Default path for the left pane (default: getenv(\"PWD\")")
+#set(PATH_DEFAULT_RIGHT "" CACHE STRING "Default path for the right pane (default: getenv(\"HOME\")")
 set(AUTOSCALE 1 CACHE STRING "Auto-detect resolution (maximize on startup if there is a windowing system)")
 set(AUTOSCALE_DPI 1 CACHE STRING "Auto-detect DPI scaling factors")
 set(WITH_SYSTEM_SDL_TTF OFF CACHE BOOL "Use system sdl_ttf")
@@ -62,6 +64,8 @@ set(DinguxCommander_SRCS
   dialog.cpp
   fileLister.cpp
   fileutils.cpp
+  fk_instant_play.c
+  fk_menu.c
   keyboard.cpp
   main.cpp
   panel.cpp
@@ -224,7 +228,7 @@ foreach(
 endforeach(def_name)
 
 
-# These variables are passed as C macro definitons if they exist.
+# These variables are passed as C macro definitions if they exist.
 foreach(
   def_name
   SCREEN_WIDTH
@@ -248,6 +252,7 @@ foreach(
   CMDR_KEY_OPERATION
   CMDR_KEY_SELECT
   CMDR_KEY_TRANSFER
+  CMDR_KEY_MENU
   CMDR_GAMEPAD_UP
   CMDR_GAMEPAD_RIGHT
   CMDR_GAMEPAD_DOWN
@@ -267,7 +272,7 @@ foreach(
 endforeach(def_name)
 target_compile_definitions(${BIN_TARGET} PRIVATE ${def_list})
 
-# These variables are passed as C macro definitons if they're not empty.
+# These variables are passed as C macro definitions if they're not empty.
 foreach(
   def_name
   PATH_DEFAULT
@@ -304,3 +309,4 @@ install(
 install(
   FILES "${PROJECT_SOURCE_DIR}/opkg/commander.png"
   DESTINATION share/icons/hicolor/32x32/apps)
+install(TARGETS commander RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
