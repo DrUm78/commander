@@ -15,6 +15,7 @@
 #include "screen.h"
 #include "sdl_ttf_multifont.h"
 #include "sdl_ptrs.h"
+#include "fk_menu.h"
 
 namespace SDL_utils {
 
@@ -228,6 +229,7 @@ void hastalavista(void)
     // Free resources
     CResourceManager::instance().sdlCleanup();
     // Quit SDL
+    FK_EndMenu();
     TTF_Quit();
     IMG_Quit();
     SDL_Quit();

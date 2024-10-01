@@ -93,6 +93,7 @@ SDLC_Keycode parseKeycode(const std::string &value)
     // We support a few common SDLK codes as config values.
     // We then allow single-char keys and ints for the rest.
     static const std::unordered_map<std::string, SDLC_Keycode> kSdlkToInt {
+        { "MENU", SDLK_MENU },
         { "BACKSPACE", SDLK_BACKSPACE },
         { "DOWN", SDLK_DOWN },
         { "ESCAPE", SDLK_ESCAPE },
@@ -210,6 +211,7 @@ void Config::Load(const std::string &path)
 
     CFG_BOOL(osk_key_system_is_backspace)
 
+    CFG_SDLK(key_menu)
     CFG_SDLK(key_down)
     CFG_SDLK(key_left)
     CFG_SDLK(key_open)

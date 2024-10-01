@@ -46,6 +46,9 @@
 #define FILE_SYSTEM "/dev/sda4"
 #endif
 
+#ifndef CMDR_KEY_MENU
+#define CMDR_KEY_MENU SDLK_MENU
+#endif
 #ifndef CMDR_KEY_UP
 #define CMDR_KEY_UP SDLK_UP
 #endif
