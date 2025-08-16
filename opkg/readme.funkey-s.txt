@@ -20,7 +20,6 @@ X       Actions on selected items:
           - Rename (appears only if 1 item is selected)
           - Delete
           - Display disk used
-        Image viewer: switch background mode
 L       Go to the top of the current page. Keep pressed to scroll up quickly
 R       Go to the bottom of the current page. Keep pressed to scroll down quickly
 SELECT  Select highlighted item.
