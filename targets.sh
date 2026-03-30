@@ -3,6 +3,7 @@ declare -ra VALID_TARGETS=(
   retrofw
   rg350
   rs90
+  pixel
 )
 
 usage_target() {

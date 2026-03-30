@@ -5,7 +5,7 @@ project(DinguxCommander
   LANGUAGES C CXX)
 
 set(TARGET_PLATFORM host CACHE STRING "Target platform")
-set_property(CACHE TARGET_PLATFORM PROPERTY STRINGS host retrofw lepus gcw0 rg350 rs90 rg99)
+set_property(CACHE TARGET_PLATFORM PROPERTY STRINGS host retrofw lepus gcw0 rg350 rs90 rg99 pixel)
 
 if(TARGET_PLATFORM STREQUAL "retrofw")
   include(CMake/retrofw_defs.cmake)
@@ -19,6 +19,8 @@ elseif(TARGET_PLATFORM STREQUAL "rs90")
   include(CMake/rs90_defs.cmake)
 elseif(TARGET_PLATFORM STREQUAL "rg99")
   include(CMake/rg99_defs.cmake)
+elseif(TARGET_PLATFORM STREQUAL "pixel")
+  include(CMake/pixel_defs.cmake)
 endif()
 
 option(USE_SDL2 "Use SDL2 instead of SDL1" ON)

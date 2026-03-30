@@ -19,7 +19,7 @@ declare -r OUT="${3:-"$BUILD_DIR/commander-${TARGET}.opk"}"
 
 main() {
   local ext="$TARGET"
-  if [[ $TARGET == rg350 ]]; then
+  if [[ $TARGET == rg350 || $TARGET == pixel ]]; then
     ext=gcw0
   fi
   local -a files=(
