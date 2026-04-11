@@ -1,6 +1,8 @@
 set(USE_SDL2 OFF)
 SET(PPU_Y 2)
 
+add_compile_options(-D_GLIBCXX_USE_CXX11_ABI=0)
+
 set(FILE_SYSTEM \"/dev/mmcblk0p4\")
 set(PATH_DEFAULT \"/media/roms\")
 set(PATH_DEFAULT_RIGHT \"/media/home\")
