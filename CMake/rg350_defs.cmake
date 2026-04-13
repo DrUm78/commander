@@ -3,8 +3,8 @@ SET(PPU_Y 2)
 
 add_compile_options(-D_GLIBCXX_USE_CXX11_ABI=0)
 
+set(FILE_SYSTEM \"/dev/mmcblk1p1\")
 set(PATH_DEFAULT \"/media/sdcard\")
-set(FILE_SYSTEM \"/dev/mmcblk0p2\")
 
 set(CMDR_KEY_UP SDLK_UP) # Up
 set(CMDR_KEY_RIGHT SDLK_RIGHT) # Right
